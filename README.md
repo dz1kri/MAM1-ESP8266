@@ -15,3 +15,4 @@ Berikut daftar isi yang direncanakan:
 7. DC Motor
 8. ADC
 9. LDC
+
