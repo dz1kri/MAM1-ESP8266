@@ -1,9 +1,8 @@
 # MAM1-ESP8266
-Praktikum MAM1 2 AEA-1 Absen Atas 
+Praktikum MAM1 2 AEA-1 Absen Atas \
 Masa Praktikum: 04-08 September 2023
 
-Ditujukan untuk melengkapi tugas praktikum pembuatan modul MAM1 oleh kelas 2 AEA-1
-
+Ditujukan untuk melengkapi tugas praktikum pembuatan modul MAM1 oleh kelas 2 AEA-1 \
 Menggunakan Mikrokontroller NodeMCU ESP8266
 
 Berikut daftar isi yang direncanakan:
