@@ -18,7 +18,7 @@ Berikut daftar isi yang direncanakan:
 9. LDC
 
 Log Kegiatan:
-04/09/2023 
+**04/09/2023**
 - Memahami struktur, pin I/O ESP8266, beserta fungsionalitas dari mikrokonttroler ini
 - Membuat cover laporan
 - Membuat bagan awal/pengantar laporan
