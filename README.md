@@ -3,7 +3,8 @@ Praktikum MAM1 2 AEA-1 Absen Atas
 Masa Praktikum: 04-08 September 2023
 
 Ditujukan untuk melengkapi tugas praktikum pembuatan modul MAM1 oleh kelas 2 AEA-1
-Menggunakan Mikrokontroller ESP8266 (Absen Atas)
+
+Menggunakan Mikrokontroller NodeMCU ESP8266 (Absen Atas)
 
 Berikut daftar isi yang direncanakan:
 1. LED
@@ -16,3 +17,9 @@ Berikut daftar isi yang direncanakan:
 8. ADC
 9. LDC
 
+Log Kegiatan:
+04/09/2023 
+- Memahami struktur, pin I/O ESP8266, beserta fungsionalitas dari mikrokonttroler ini
+- Membuat cover laporan
+- Membuat bagan awal/pengantar laporan
+- Ujicoba kontroller antarmuka sederhana via hotspot dari ESP8266
