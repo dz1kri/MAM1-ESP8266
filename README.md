@@ -19,7 +19,7 @@ Berikut daftar isi yang direncanakan:
 
 Log Kegiatan:
 **04/09/2023**
-- Memahami struktur, pin I/O ESP8266, beserta fungsionalitas dari mikrokonttroler ini
+- Memahami struktur, pin I/O ESP8266, beserta fungsionalitas dari mikrokontroler ini
 - Membuat cover laporan
 - Membuat bagan awal/pengantar laporan
 - Ujicoba kontroller antarmuka sederhana via hotspot dari ESP8266
