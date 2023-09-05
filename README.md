@@ -22,7 +22,7 @@ Log Kegiatan:
 - Membuat cover laporan
 - Membuat bagan awal/pengantar laporan
 - Ujicoba kontroller antarmuka sederhana via hotspot dari ESP8266 \
-\
+<br>\
 **05/09/2023**
 - Membuat antarmuka yang pas untuk layar kecil/mobile
 - Membuat antarmuka menghubungkan LCD dengan memasukan input huruf yang kemudian ditampilkan pada LCD
