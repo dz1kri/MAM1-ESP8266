@@ -21,4 +21,8 @@ Log Kegiatan:
 - Memahami struktur, pin I/O ESP8266, beserta fungsionalitas dari mikrokontroler ini
 - Membuat cover laporan
 - Membuat bagan awal/pengantar laporan
-- Ujicoba kontroller antarmuka sederhana via hotspot dari ESP8266
+- Ujicoba kontroller antarmuka sederhana via hotspot dari ESP8266 \
+**05/09/2023**
+- Membuat antarmuka yang pas untuk layar kecil/mobile
+- Membuat antarmuka menghubungkan LCD dengan memasukan input huruf yang kemudian ditampilkan pada LCD
+- 
