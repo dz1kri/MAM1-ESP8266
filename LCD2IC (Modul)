@@ -1,0 +1,107 @@
+#include <ESP8266WiFi.h>
+#include <ESP8266WebServer.h>
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+
+ESP8266WebServer server(80);
+const char* ssid = "LCD Control ESP8266";
+const char* password = "123456789";
+LiquidCrystal_I2C lcd(0x27, 16, 2);  // Gunakan alamat I2C yang sesuai
+bool isRunning = false;  // Status running text
+
+void setup() {
+  Serial.begin(115200);
+  delay(10);
+  // Set the ESP8266 as an access point
+  WiFi.mode(WIFI_AP);
+  WiFi.softAP(ssid, password);
+  IPAddress IP = WiFi.softAPIP();
+  Serial.print("AP IP address: ");
+  Serial.println(IP);
+    // Atur routing HTTP
+  server.on("/", HTTP_GET, handleRoot);
+  server.on("/startRunningText", HTTP_POST, handlestartRunningText);
+  server.on("/stopRunningText", HTTP_POST, handlestopRunningText);
+  server.on("/clearScreen", HTTP_POST, handleclearScreen);
+  // Start server
+  server.begin();
+
+  // Inisialisasi LCD
+  lcd.init();
+  lcd.backlight();
+  lcd.setCursor(0, 0);
+  lcd.print("POLMAN BANDUNG");
+}
+
+void loop() {
+  server.handleClient();
+
+  // Logika untuk menggerakkan teks berjalan
+  if (isRunning) {
+    scrollText();
+  }
+}
+
+void handleRoot() {
+ String html = "<html><head>";
+  html += "<style>";
+  html += "body { font-family: Arial, sans-serif; text-align: center; background-color: #f5f5f5; margin: 0; padding: 0; }";
+  html += "#container { max-width: 80%; margin: 20px auto; background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }";
+  html += "h1 { font-size: 24px; color: #333; }";
+  html += "#startButton, #stopButton, #clearButton { padding: 10px 20px; font-size: 18px; margin: 10px; cursor: pointer; border: none; border-radius: 5px; transition: background-color 0.3s ease-in-out; }";
+  html += "#startButton:hover, #stopButton:hover, #clearButton:hover { transform: scale(1.05); }";
+  html += "#startButton, #stopButton { background-color: #007bff; color: #fff; }";
+  html += "#startButton:hover, #stopButton:hover { background-color: #0056b3; }";
+  html += "#clearButton { background-color: #ff0000; color: #fff; }";
+  html += "#clearButton:hover { background-color: #cc0000; }";
+  html += "</style>";
+  html += "</head><body>";
+  html += "<div id='container'>";
+  html += "<h1>Running Text Control</h1>";
+  html += "<button id='startButton' onclick='startRunningText()'>Start</button>";
+  html += "<button id='stopButton' onclick='stopRunningText()'>Stop</button>";
+  html += "<button id='clearButton' onclick='clearScreen()'>Clear Screen</button>";
+  html += "<script>";
+  html += "function startRunningText() { fetch('/startRunningText', { method: 'POST' }); }";
+  html += "function stopRunningText() { fetch('/stopRunningText', { method: 'POST' }); }";
+  html += "function clearScreen() { fetch('/clearScreen', { method: 'POST' }); }";
+  html += "</script></div></body></html>";
+  server.send(200, "text/html", html);
+}
+
+void handlestartRunningText() {
+  isRunning = true;
+  server.send(200, "text/plain", "Running text started");
+}
+
+void handlestopRunningText() {
+  isRunning = false;
+  server.send(200, "text/plain", "Running text stopped");
+}
+
+void handleclearScreen() {
+  lcd.clear(); // Hapus tampilan layar
+  server.send(200, "text/plain", "Screen cleared");
+} 
+
+void scrollText() {
+  static String message = "POLMAN BANDUNG";  // Pesan yang akan digulirkan
+  static int scrollPosition = 0;  // Posisi awal
+  static unsigned long previousMillis = 0;
+  const unsigned long interval = 200;  // Atur kecepatan gulir
+
+  unsigned long currentMillis = millis();
+
+  if (currentMillis - previousMillis >= interval) {
+    previousMillis = currentMillis;
+
+    lcd.clear();
+    lcd.setCursor(scrollPosition, 0);
+    lcd.print(message.substring(0, 30));  // Hanya tampilkan 30 karakter pertama
+    scrollPosition++;
+
+    if (scrollPosition >= message.length()) {
+      scrollPosition = 0;
+    }
+  }
+}
