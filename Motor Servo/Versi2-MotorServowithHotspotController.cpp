@@ -3,7 +3,7 @@
 #include <Servo.h>
 
 const char* ssid = "FJBKanayakanESP8266";     // Nama hotspot yang akan dibuat
-const char* password = ""; // Kata sandi hotspot
+const char* password = "10987654321"; // Kata sandi hotspot
 
 ESP8266WebServer server(80);
 Servo myservo;
